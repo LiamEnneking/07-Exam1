@@ -2,8 +2,8 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Liam.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -88,7 +88,7 @@ def problem3(point, length, delta, window):
       :type window:  rg.RoseWindow
     """
     # --------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     # TODO (continued):  IMPORTANT: Use this ITERATIVE ENHANCEMENT PLAN:
     # TODO (continued):    1. Make the sole VERTICAL line appear,
     # TODO (continued):         with thickness 3.
@@ -102,6 +102,27 @@ def problem3(point, length, delta, window):
     # TODO (continued):         and colors per the specified pattern.
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
+
+    line = rg.Line(point, rg.Point(point.x, point.y + length))
+    line.color = 'black'
+    line.thickness = 3
+    line.attach_to(window)
+
+    for k in range((length // delta + 1)):
+        print(k)
+        line2 = rg.Line(rg.Point(point.x, point.y + (k*delta)), rg.Point(point.x+length + k*20, point.y + (k*delta)))
+        line2.thickness = 3
+        if k == 0 or k == 3 or k == 6:
+            line2.color = 'magenta'
+        if k == 1 or k == 4 or k == 7:
+            line2.color = 'cyan'
+        if k == 2 or k == 5 or k == 8:
+            line2.color = 'spring green'
+        line2.attach_to(window)
+        window.render()
+
+
+
 
 
 # ----------------------------------------------------------------------
